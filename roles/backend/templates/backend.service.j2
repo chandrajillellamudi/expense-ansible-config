@@ -1,0 +1,15 @@
+[Unit]
+Description=Backend Service
+After=network.target
+
+[Service]
+User=expense
+WorkingDirectory=/app
+Environment=DB_HOST=db.chandradevops.online
+Environment=PORT=8080
+ExecStart=/usr/bin/node /app/index.js
+Restart=always
+SyslogIdentifier=backend
+
+[Install]
+WantedBy=multi-user.target
