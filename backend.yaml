@@ -1,5 +1,5 @@
 - name: configure {{ component }} server
-  hosts: backend
+  hosts: localhost
   become: yes
   roles:
   - backend
