@@ -1,5 +1,5 @@
 - name: configure {{ component }} server
-  hosts: web
+  hosts: localhost
   become: yes
   roles:
   - frontend
