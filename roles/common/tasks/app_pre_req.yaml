@@ -14,10 +14,24 @@
 #     dest : "{{ app_location }}"
 #     remote_src : yes
 
-- name : download code from nexus
+# - name : download code from nexus
+#   ansible.builtin.unarchive:
+#     src : "http://{{ nexus_url }}/repository/{{ component }}/com/expense/{{ component }}/{{ AppVersion }}/{{ component }}-{{ AppVersion }}.zip"
+#     dest : "{{ app_location }}"
+#     remote_src : yes
+
+
+- name: Download backend artifact from Nexus
+  ansible.builtin.get_url:
+    url: "http://{{ nexus_url }}/repository/{{ component }}/com/expense/{{ component }}/{{ AppVersion }}/{{ component }}-{{ AppVersion }}.zip"
+    dest: "/tmp/{{ component }}-{{ AppVersion }}.zip"
+    url_username: "{{ login_user }}"
+    url_password: "{{ login_password }}"
+    force: yes
+    mode: '0644'
+
+- name: Extract backend artifact
   ansible.builtin.unarchive:
-    src : "http://{{ nexus_url }}/repository/{{ component }}/com/expense/{{ component }}/{{ AppVersion }}/{{ component }}-{{ AppVersion }}.zip"
-    dest : "{{ app_location }}"
-    remote_src : yes
-
-
+    src: "/tmp/{{ component }}-{{ AppVersion }}.zip"
+    dest: "{{ app_location }}"
+    remote_src: yes
