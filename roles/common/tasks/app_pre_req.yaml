@@ -8,9 +8,15 @@
     path : "{{ app_location }}"
     state : directory
 
-- name : download and extract the code
+# - name : download and extract the code
+#   ansible.builtin.unarchive:
+#     src : "https://expense-builds.s3.us-east-1.amazonaws.com/expense-{{ component }}-v2.zip"
+#     dest : "{{ app_location }}"
+#     remote_src : yes
+
+- name : download code from nexus
   ansible.builtin.unarchive:
-    src : "https://expense-builds.s3.us-east-1.amazonaws.com/expense-{{ component }}-v2.zip"
+    src : "http://{{ nexus_url }}/repository/{{ component }}/com/expense/{{ component }}/{{ AppVersion }}/{{ component }}-{{ AppVersion }}.zip"
     dest : "{{ app_location }}"
     remote_src : yes
 
