@@ -16,7 +16,7 @@
 
 # - name : download code from nexus
 #   ansible.builtin.unarchive:
-#     src : "http://{{ nexus_url }}/repository/{{ component }}/com/expense/{{ component }}/{{ AppVersion }}/{{ component }}-{{ AppVersion }}.zip"
+#     src : "http://nexus.chandradevops.online:8081/repository/backend/com/expense/backend/{{ AppVersion }}/backend-{{ AppVersion }}.zip"
 #     dest : "{{ app_location }}"
 #     remote_src : yes
 
