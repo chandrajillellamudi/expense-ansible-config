@@ -2,3 +2,5 @@ BACKEND_API_URL: backend.app-dev.chandradevops.online
 app_location: /usr/share/nginx/html
 component: frontend
 nexus_url: nexus.chandradevops.online:8081
+login_user: root
+login_password: ExpenseApp1
